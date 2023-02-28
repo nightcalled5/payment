@@ -1,8 +1,13 @@
 <?php 
- $payment_parameters = http_build_query(array( "clientid"=>$client_login,
-                "orderid"=>$orderid,
-                "sum"=>$order_sum,
-                "client_phone"=>$optional_phone));
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+  // обработка отправки формы
+$total = $_POST['total'];
+$username = $_POST['username'];
+
+  $payment_parameters = http_build_query(array(
+    "clientid" => $username,
+    "sum" => $total,
+  ));
   $options = array("http"=>array(
                 "method"=>"POST",
                 "header"=>
@@ -12,4 +17,9 @@
   $context = stream_context_create($options);
  
   echo file_get_contents("https://demo.paykeeper.ru/order/inline/",FALSE, $context);
+  # Вместо demo.paykeeper.ru нужно указать адрес вашего сервера paykeeper
+
+echo '<script>alert("Запрос выполнен успешно!");window.close();</script>';
+
+}
 ?>
