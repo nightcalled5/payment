@@ -39,10 +39,10 @@
 <input type="hidden" name="total" id="total_input">
 <label for="username">Имя пользователя:</label>
 <input type="text" id="username">
-<label for="payment_count">Кол-во единиц:</label>
+<label for="payment_vehicles">Кол-во единиц:</label>
+<input type="text" id="payment_vehicles"  oninput="calculateTotal()"  name="payment_vehicles">
+<label for="payment_count">Кол-во месяцев:</label>
 <input type="text" id="payment_count"  oninput="calculateTotal()"  name="payment_count">
-<label for="payment_month">Кол-во месяцев:</label>
-<input type="text" id="payment_month"  oninput="calculateTotal()"  name="payment_month">
 <input type="submit" type="submit" name="submit" value="Оплатить"/>
 <div id="log"></div>
 <p><span id="total"></span></p>
